@@ -4,22 +4,24 @@
 
         function displayMovieInfo() {
         var gif = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=iTv7xb6X5J7LZqreUYQzxByHl6upUutx&q="+gif+"&limit=10&offset=0&rating=G&lang=en";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=iTv7xb6X5J7LZqreUYQzxByHl6upUutx&q="+gif+"&limit=10&offset=0&lang=en";
         $.ajax({
           url: queryURL,
           method: "GET"
         }).then(function(response) {
           $("#gif-view").empty();
-            console.log(response.data[0].images);
-            console.log(response.data.length);
-
           for (let index = 0; index < response.data.length; index++) {
             var image=$("<img>");
             image.addClass("gifs");
             image.attr("src",response.data[index].images.original_still.url);
             image.attr("id","gif-"+index);
+            image.attr("data-toggle","tooltip");
+            image.attr("title","Rating: "+response.data[index].rating);
             image.prependTo("#gif-view"); 
           }
+
+
+          $('[data-toggle="tooltip"]').tooltip(); 
 
           $(".gifs").on("click", function(event) {
             var id2text = this.id;
