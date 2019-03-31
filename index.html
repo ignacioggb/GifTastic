@@ -25,10 +25,29 @@
 
       <!-- Button triggers new movie to be added -->
       <input id="add-gif" type="submit" value="Add a Gif" class="btn btn-primary">
-    </form>
 
+    </form>
   </div>
     
+<div class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <label for="numberof-input"># of extra gifs</label>
+                <input  type="number" min="0" max="10" id="numberof-input" ><br>
+                <input id="add-extra" type="submit" value="Get more" class="btn btn-primary">
+              </form>
+        </div>
+        <div class="col-6">
+<button id="favs" class="btn btn-primary">show favs</button>
+        </div>
+        </div>
+
+
+  
+</div>
+
     <div class="container" id="wrapper">
     <!-- Movies will get dumped Here -->
     <div id="gif-view"></div>
